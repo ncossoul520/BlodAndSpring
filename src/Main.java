@@ -1,15 +1,10 @@
-import org.omg.CORBA.PRIVATE_MEMBER;
 import processing.core.PApplet;
 import processing.core.PVector;
-
 import java.util.ArrayList;
 
 public class Main extends PApplet {
     ArrayList<Blob> blobs;
     ArrayList<Spring> springs;
-
-    Blob b1, b2;
-    Spring s;
 
     public void settings() {
         size(800, 800);
@@ -17,7 +12,6 @@ public class Main extends PApplet {
 
     public void setup() {
         frameRate(30);
-
         blobs = makeBlobList(100);
         springs = makeSpringFor(blobs, 200);
     }
@@ -50,7 +44,6 @@ public class Main extends PApplet {
 
     public void draw() {
         background(255);
-
         moveBlobs();
         drawBlobs();
     }
@@ -66,7 +59,7 @@ public class Main extends PApplet {
             s.moveBlobs();
         }
 
-        for ( Blob b: blobs) {
+        for (Blob b: blobs) {
             b.updatePosition();
         }
     }

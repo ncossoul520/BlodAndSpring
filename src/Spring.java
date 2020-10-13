@@ -12,12 +12,12 @@ public class Spring {
     }
 
     public void moveBlobs() {
-        PVector F = PVector.sub(b2.getPos(), b1.getPos());
+        PVector F = PVector.sub( b2.getPos(), b1.getPos() );
         float mag = k*(F.mag()-length);
         F.setMag(mag);
 
         b1.accelerate(F);
-        F.mult(-1);
+        F.mult(-1);   // reverse direction of force
         b2.accelerate(F);
     }
 }
