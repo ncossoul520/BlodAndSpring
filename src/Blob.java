@@ -7,6 +7,13 @@ public class Blob {
     private PVector pos, vel, acc;
     private int size;
 
+    public Blob(int x, int y, int size) {
+        this.size = size;
+        this.pos = new PVector(x, y);
+        this.vel = new PVector(0, 0);
+        this.acc = new PVector(0, 0);
+    }
+
     public Blob(PVector pos, int size) {
         this.size = size;
         this.pos = pos;

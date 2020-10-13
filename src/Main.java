@@ -16,6 +16,22 @@ public class Main extends PApplet {
         springs = makeSpringFor(blobs, 200);
     }
 
+    public void draw() {
+        background(255);
+        moveBlobs();
+        drawBlobs();
+    }
+
+    private ArrayList<Blob> makeBlobList(int numBlobs) {
+        ArrayList<Blob> out = new ArrayList<>();
+
+        for (int i = 0; i < numBlobs; i++) {
+            Blob b = new Blob((int)(100+Math.random()*600), (int)(100+Math.random()*600), 10);
+            out.add(b);
+        }
+        return out;
+    }
+
     private ArrayList<Spring> makeSpringFor(ArrayList<Blob> blobs, int restingLength) {
         ArrayList<Spring> springs = new ArrayList<>();
 
@@ -31,29 +47,6 @@ public class Main extends PApplet {
         return springs;
     }
 
-    private ArrayList<Blob> makeBlobList(int numBlobs) {
-        ArrayList<Blob> out = new ArrayList<>();
-
-        for (int i = 0; i < numBlobs; i++) {
-            PVector pos = new PVector((int)(100+Math.random()*600), (int)(100 + Math.random()*600));
-            Blob b = new Blob(pos, 10);
-            out.add(b);
-        }
-        return out;
-    }
-
-    public void draw() {
-        background(255);
-        moveBlobs();
-        drawBlobs();
-    }
-
-    private void drawBlobs() {
-        for (Blob b: blobs) {
-            b.draw(this);
-        }
-    }
-
     private void moveBlobs() {
         for (Spring s : springs) {
             s.moveBlobs();
@@ -61,6 +54,12 @@ public class Main extends PApplet {
 
         for (Blob b: blobs) {
             b.updatePosition();
+        }
+    }
+
+    private void drawBlobs() {
+        for (Blob b: blobs) {
+            b.draw(this);
         }
     }
 
